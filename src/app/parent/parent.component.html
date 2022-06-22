@@ -1,1 +1,19 @@
-<p>parent works!</p>
+<mat-toolbar>
+  <button (click)="this.toggleDrawer()" mat-icon-button>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Actions</span>
+</mat-toolbar>
+
+<mat-drawer-container>
+  <mat-drawer mode="over" #drawer>
+    <div id="selection-buttons-div">
+      <button mat-raised-button color="primary" routerLink="/consumerBusiness"
+        (click)="this.toggleDrawer()">Consumer</button>
+    </div>
+  </mat-drawer>
+
+  <div id="router-outlet-div">
+    <router-outlet></router-outlet>
+  </div>
+</mat-drawer-container>

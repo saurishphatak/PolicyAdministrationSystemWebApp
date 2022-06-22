@@ -1,0 +1,16 @@
+#router-outlet-div {
+  height: 100vh;
+  border: 1px solid red;
+}
+
+#selection-buttons-div {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+}
+
+mat-drawer {
+  width: 20%;
+}
