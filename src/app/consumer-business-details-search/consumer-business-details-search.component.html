@@ -1,0 +1,61 @@
+<form [formGroup]="this.formGroup">
+  <div id="search-consumer-details-div">
+    <mat-form-field>
+      <mat-label>Consumer ID</mat-label>
+      <input type="number" matInput formControlName="consumerId">
+    </mat-form-field>
+
+    <button type="button" mat-flat-button color="primary" (click)="this.getConsumerBusiness()">Search
+      Consumer</button>
+  </div>
+</form>
+
+<mat-card *ngIf="this.consumerFound">
+  <div>
+    <mat-form-field>
+      <mat-label>Consumer ID</mat-label>
+      <input type="number" matInput [value]="this.consumer?.id" readonly>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Consumer Name</mat-label>
+      <input type="text" matInput [value]="this.consumer?.name" readonly>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input type="text" matInput [value]="this.consumer?.email" readonly>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>PAN</mat-label>
+      <input type="text" matInput [value]="this.consumer?.pan" readonly>
+    </mat-form-field>
+
+    <mat-card>
+      <mat-card-content>
+
+        <mat-form-field>
+          <mat-label>Business ID</mat-label>
+          <input type="number" matInput [value]="this.consumer?.business?.id" readonly>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Business Type</mat-label>
+          <input type="string" matInput [value]="this.consumer?.business?.businessType" readonly>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Annual Turnover</mat-label>
+          <input type="number" matInput [value]="this.consumer?.business?.annualTurnover" readonly>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Number of Employees</mat-label>
+          <input type="number" matInput [value]="this.consumer?.business?.totalEmployess" readonly>
+        </mat-form-field>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+</mat-card>

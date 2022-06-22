@@ -17,18 +17,22 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from "@angular/material/card";
+import { MatExpansionModule } from "@angular/material/expansion";
+import { ConsumerBusinessDetailsSearchComponent } from './consumer-business-details-search/consumer-business-details-search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ParentComponent,
     ConsumerBusinessParentComponent,
-    ConsumerBusinessFormComponent
+    ConsumerBusinessFormComponent,
+    ConsumerBusinessDetailsSearchComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatExpansionModule,
     ReactiveFormsModule,
     FormsModule,
     MatFormFieldModule,
@@ -38,7 +42,7 @@ import { MatCardModule } from "@angular/material/card";
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
   ],
   providers: [
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } }
