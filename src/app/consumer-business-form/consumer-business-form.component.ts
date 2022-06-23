@@ -2,7 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatAccordion } from '@angular/material/expansion';
 import { ConsumerBusinessService } from '../consumer-business.service';
-import { Consumer } from '../Models/Consumer';
+import { Consumer, IConsumer } from '../Models/Consumer';
 
 @Component({
   selector: 'app-consumer-business-form',
@@ -34,6 +34,7 @@ export class ConsumerBusinessFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.consumerBusinessService.updateConsumerBusinessSubject.subscribe(this.patchForm.bind(this));
   }
 
   lastId = 1;
@@ -77,4 +78,19 @@ export class ConsumerBusinessFormComponent implements OnInit {
     this.formGroup.reset();
   }
 
+  patchForm(consumerBusiness: IConsumer) {
+    this.formGroup.setValue(
+      {
+        name: consumerBusiness?.name,
+        dob: consumerBusiness?.dob.toString(),
+        email: consumerBusiness?.email,
+        pan: consumerBusiness?.pan,
+
+        businessFormGroup: {
+          businessType: consumerBusiness?.business?.businessType,
+          annualTurnover: consumerBusiness?.business?.annualTurnover,
+          totalEmployees: consumerBusiness?.business?.totalEmployess
+        }
+      });
+  }
 }

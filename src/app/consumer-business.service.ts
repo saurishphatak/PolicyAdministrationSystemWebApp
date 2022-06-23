@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Business } from './Models/Business';
 import { Consumer, IConsumer } from './Models/Consumer';
 
@@ -6,6 +7,8 @@ import { Consumer, IConsumer } from './Models/Consumer';
   providedIn: 'root'
 })
 export class ConsumerBusinessService {
+
+  public updateConsumerBusinessSubject = new Subject<IConsumer>();
 
   consumerBusinesses: IConsumer[] = [
     new Consumer(
