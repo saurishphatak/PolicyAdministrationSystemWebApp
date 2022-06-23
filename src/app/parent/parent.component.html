@@ -8,8 +8,11 @@
 <mat-drawer-container>
   <mat-drawer mode="over" #drawer>
     <div id="selection-buttons-div">
-      <button mat-raised-button color="primary" routerLink="/consumerBusiness"
-        (click)="this.toggleDrawer()">Consumer</button>
+      <button type="button" mat-raised-button color="primary" routerLink="/consumerBusiness"
+        (click)="this.toggleDrawer()">Consumer Business</button>
+
+      <button type="button" mat-raised-button color="primary" routerLink="/businessProperty"
+        (click)="this.toggleDrawer()">Business Property</button>
     </div>
   </mat-drawer>
 

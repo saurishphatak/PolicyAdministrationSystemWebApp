@@ -19,6 +19,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from "@angular/material/card";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { ConsumerBusinessDetailsSearchComponent } from './consumer-business-details-search/consumer-business-details-search.component';
+import { BusinessPropertyFormComponent } from './business-property-form/business-property-form.component';
+import { BusinessPropertyDetailsSearchComponent } from './business-property-details-search/business-property-details-search.component';
+import { BusinessPropertyParentComponent } from './business-property-parent/business-property-parent.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { ConsumerBusinessDetailsSearchComponent } from './consumer-business-deta
     ParentComponent,
     ConsumerBusinessParentComponent,
     ConsumerBusinessFormComponent,
-    ConsumerBusinessDetailsSearchComponent
+    ConsumerBusinessDetailsSearchComponent,
+    BusinessPropertyFormComponent,
+    BusinessPropertyDetailsSearchComponent,
+    BusinessPropertyParentComponent
   ],
   imports: [
     BrowserModule,
