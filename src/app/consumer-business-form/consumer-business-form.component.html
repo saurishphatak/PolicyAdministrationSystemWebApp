@@ -23,9 +23,14 @@
   </mat-form-field>
 
   <mat-card>
-    <mat-card-content>
+    <mat-card-subtitle>
+      <div class="header-div">
+        <h3>Business Details</h3>
+      </div>
+    </mat-card-subtitle>
 
-      <div formGroupName="businessFormGroup">
+    <mat-card-content>
+      <div formGroupName="businessFormGroup" id="consumer-business-form-div">
 
         <mat-form-field>
           <mat-label>Business Type</mat-label>
@@ -42,8 +47,13 @@
           <input type="number" matInput formControlName="totalEmployees">
         </mat-form-field>
 
+        <mat-form-field>
+          <mat-label>Capital Invested</mat-label>
+          <input type="number" matInput formControlName="capitalInvested">
+        </mat-form-field>
       </div>
     </mat-card-content>
+
   </mat-card>
 
   <button type="button" (click)="this.onSubmit()" color="primary" mat-flat-button>Add Consumer</button>

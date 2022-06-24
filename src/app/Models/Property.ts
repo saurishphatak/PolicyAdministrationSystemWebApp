@@ -5,6 +5,10 @@ export class Property implements IProperty {
   public storeys: number;
   public age: number;
   public consumerId: number;
+  public costOfAsset: number;
+  public salvageValue: number;
+  public usefulLifeOfAsset: number;
+  public propertyType: string;
 
   public constructor(
     initialValues: IProperty
@@ -15,7 +19,12 @@ export class Property implements IProperty {
     this.squareFeet = initialValues.squareFeet;
     this.storeys = initialValues.storeys;
     this.consumerId = initialValues.consumerId;
+    this.costOfAsset = initialValues.costOfAsset;
+    this.salvageValue = initialValues.salvageValue;
+    this.usefulLifeOfAsset = initialValues.usefulLifeOfAsset;
+    this.propertyType = initialValues.propertyType;
   }
+
 }
 
 export interface IProperty {
@@ -24,5 +33,9 @@ export interface IProperty {
   buildingType: string;
   storeys: number;
   age: number;
-  consumerId: number
+  consumerId: number;
+  costOfAsset: number;
+  salvageValue: number;
+  usefulLifeOfAsset: number;
+  propertyType: string;
 }

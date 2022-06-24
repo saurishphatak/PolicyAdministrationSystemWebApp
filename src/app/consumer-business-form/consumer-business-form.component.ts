@@ -27,6 +27,7 @@ export class ConsumerBusinessFormComponent implements OnInit {
           businessType: new FormControl('', Validators.required),
           annualTurnover: new FormControl('', Validators.required),
           totalEmployees: new FormControl('', Validators.required),
+          capitalInvested: new FormControl('', Validators.required)
         }
         )
       }
@@ -56,7 +57,8 @@ export class ConsumerBusinessFormComponent implements OnInit {
             id: ++this.lastId,
             annualTurnover: businessFormGroup.get("annualTurnover")?.value,
             businessType: businessFormGroup.get("businessType")?.value,
-            totalEmployess: businessFormGroup.get("totalEmployees")?.value
+            totalEmployess: businessFormGroup.get("totalEmployees")?.value,
+            capitalInvested: businessFormGroup.get("capitalInvested")?.value,
           }
         }
       );

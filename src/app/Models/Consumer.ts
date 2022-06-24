@@ -10,7 +10,7 @@ export interface IConsumer {
 }
 
 export class Consumer implements IConsumer {
-  public id: number;
+  public id: number = -1;
   public name: string;
   public dob: Date;
   public email: string;

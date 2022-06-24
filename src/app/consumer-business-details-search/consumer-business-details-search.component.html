@@ -11,7 +11,7 @@
 </form>
 
 <mat-card *ngIf="this.consumerFound">
-  <div>
+  <div id="consumer-details-div">
     <mat-form-field>
       <mat-label>Consumer ID</mat-label>
       <input type="number" matInput [value]="this.consumer?.id" readonly>
@@ -33,32 +33,45 @@
     </mat-form-field>
 
     <mat-card>
+      <div class="header-div">
+        <mat-card-subtitle>
+          <h3>Business Details</h3>
+        </mat-card-subtitle>
+      </div>
+
       <mat-card-content>
 
-        <mat-form-field>
-          <mat-label>Business ID</mat-label>
-          <input type="number" matInput [value]="this.consumer?.business?.id" readonly>
-        </mat-form-field>
+        <div id="consumer-business-details-div">
+          <mat-form-field>
+            <mat-label>Business ID</mat-label>
+            <input type="number" matInput [value]="this.consumer?.business?.id" readonly>
+          </mat-form-field>
 
-        <mat-form-field>
-          <mat-label>Business Type</mat-label>
-          <input type="string" matInput [value]="this.consumer?.business?.businessType" readonly>
-        </mat-form-field>
+          <mat-form-field>
+            <mat-label>Business Type</mat-label>
+            <input type="string" matInput [value]="this.consumer?.business?.businessType" readonly>
+          </mat-form-field>
 
-        <mat-form-field>
-          <mat-label>Annual Turnover</mat-label>
-          <input type="number" matInput [value]="this.consumer?.business?.annualTurnover" readonly>
-        </mat-form-field>
+          <mat-form-field>
+            <mat-label>Annual Turnover</mat-label>
+            <input type="number" matInput [value]="this.consumer?.business?.annualTurnover" readonly>
+          </mat-form-field>
 
-        <mat-form-field>
-          <mat-label>Number of Employees</mat-label>
-          <input type="number" matInput [value]="this.consumer?.business?.totalEmployess" readonly>
-        </mat-form-field>
+          <mat-form-field>
+            <mat-label>Number of Employees</mat-label>
+            <input type="number" matInput [value]="this.consumer?.business?.totalEmployess" readonly>
+          </mat-form-field>
 
+          <mat-form-field>
+            <mat-label>Capital Invested</mat-label>
+            <input type="number" matInput [value]="this.consumer?.business?.capitalInvested" readonly>
+          </mat-form-field>
+
+        </div>
       </mat-card-content>
     </mat-card>
 
     <!-- Update consumer business button -->
-    <button type="button" (click)="this.updateConsumerBusiness()">Update</button>
+    <button type="button" mat-flat-button color="primary" (click)="this.updateConsumerBusiness()">Update</button>
   </div>
 </mat-card>

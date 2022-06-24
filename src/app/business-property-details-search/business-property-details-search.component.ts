@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { BusinessPropertyService } from '../business-property.service';
+import { IProperty } from '../Models/Property';
 
 @Component({
   selector: 'app-business-property-details-search',
@@ -7,9 +10,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BusinessPropertyDetailsSearchComponent implements OnInit {
 
-  constructor() { }
+  formGroup: FormGroup;
+
+  constructor(formBuilder: FormBuilder, private businessPropertyService: BusinessPropertyService) {
+    this.formGroup = formBuilder.group(
+      {
+        consumerId: new FormControl('', Validators.required),
+        businessId: new FormControl('', Validators.required)
+      }
+    );
+  }
+
+  businessPropertyFound = false;
+  property!: IProperty;
 
   ngOnInit(): void {
   }
 
+  getBusinessProperty() {
+    if (this.formGroup.valid) {
+      let consumerId = Number(this.formGroup.get('consumerId')?.value ?? -1);
+      let businessId = Number(this.formGroup.get('businessId')?.value ?? -1);
+
+      let property = this.businessPropertyService.getBusinessProperty(consumerId, businessId);
+
+      console.log("PROPERTY RECEIVED : ", property);
+      if (property) {
+        console.log("PROPERTY FOUND : ", property);
+
+        this.property = property;
+        this.businessPropertyFound = true;
+      }
+    }
+  }
+
+  updateBusinessProperty() {
+    this.businessPropertyService.updateBusinessPropertySubject.next(this.property);
+  }
 }

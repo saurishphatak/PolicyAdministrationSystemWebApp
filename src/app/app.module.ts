@@ -22,6 +22,7 @@ import { ConsumerBusinessDetailsSearchComponent } from './consumer-business-deta
 import { BusinessPropertyFormComponent } from './business-property-form/business-property-form.component';
 import { BusinessPropertyDetailsSearchComponent } from './business-property-details-search/business-property-details-search.component';
 import { BusinessPropertyParentComponent } from './business-property-parent/business-property-parent.component';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { BusinessPropertyParentComponent } from './business-property-parent/busi
     MatIconModule,
     MatButtonModule,
     MatCardModule,
+    HttpClientModule
   ],
   providers: [
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } }

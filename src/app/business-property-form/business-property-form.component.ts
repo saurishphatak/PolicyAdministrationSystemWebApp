@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { BusinessPropertyService } from '../business-property.service';
 import { IProperty, Property } from '../Models/Property';
 
 @Component({
@@ -11,7 +12,8 @@ export class BusinessPropertyFormComponent implements OnInit {
 
   formGroup: FormGroup;
   constructor(
-    formBuilder: FormBuilder
+    formBuilder: FormBuilder,
+    private businessPropertyService: BusinessPropertyService
   ) {
     this.formGroup = formBuilder.group({
       businessId: new FormControl('', Validators.required),
@@ -20,10 +22,15 @@ export class BusinessPropertyFormComponent implements OnInit {
       storeys: new FormControl('', Validators.required),
       age: new FormControl('', Validators.required),
       consumerId: new FormControl('', Validators.required),
+      costOfAsset: new FormControl('', Validators.required),
+      salvageValue: new FormControl('', Validators.required),
+      usefulLifeOfAsset: new FormControl('', Validators.required),
+      propertyType: new FormControl('', Validators.required)
     });
   }
 
   ngOnInit(): void {
+    this.businessPropertyService.updateBusinessPropertySubject.subscribe(this.patchForm.bind(this));
   }
 
   onSubmit() {
@@ -36,7 +43,20 @@ export class BusinessPropertyFormComponent implements OnInit {
       );
 
       console.log("NEW PROPERTY : ", businessProperty);
+
+      this.businessPropertyService.addBusinessProperty(businessProperty);
+
+      this.resetForm();
     }
   }
 
+  patchForm(property: IProperty) {
+    this.formGroup.setValue(
+      property
+    );
+  }
+
+  resetForm() {
+    this.formGroup.reset();
+  }
 }

@@ -48,6 +48,4 @@ export class ConsumerBusinessDetailsSearchComponent implements OnInit {
   updateConsumerBusiness() {
     this.consumerBusinessService.updateConsumerBusinessSubject.next(this.consumer);
   }
-
-
 }
