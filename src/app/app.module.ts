@@ -23,6 +23,10 @@ import { BusinessPropertyFormComponent } from './business-property-form/business
 import { BusinessPropertyDetailsSearchComponent } from './business-property-details-search/business-property-details-search.component';
 import { BusinessPropertyParentComponent } from './business-property-parent/business-property-parent.component';
 import { HttpClientModule } from "@angular/common/http";
+import { PolicyParentComponent } from './policy-parent/policy-parent.component';
+import { CreatePolicyComponent } from './create-policy/create-policy.component';
+import { IssuePolicyComponent } from './issue-policy/issue-policy.component';
+import { ViewPolicyComponent } from './view-policy/view-policy.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import { HttpClientModule } from "@angular/common/http";
     ConsumerBusinessDetailsSearchComponent,
     BusinessPropertyFormComponent,
     BusinessPropertyDetailsSearchComponent,
-    BusinessPropertyParentComponent
+    BusinessPropertyParentComponent,
+    PolicyParentComponent,
+    CreatePolicyComponent,
+    IssuePolicyComponent,
+    ViewPolicyComponent
   ],
   imports: [
     BrowserModule,
