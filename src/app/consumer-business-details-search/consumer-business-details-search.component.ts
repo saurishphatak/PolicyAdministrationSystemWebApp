@@ -15,6 +15,9 @@ export class ConsumerBusinessDetailsSearchComponent implements OnInit {
   consumer!: IConsumer;
   consumerFound = false;
 
+  className = "ConsumerBusinessDetailsSearchComponent";
+  debug = console.log;
+
   constructor(
     formBuilder: FormBuilder,
     private consumerBusinessService: ConsumerBusinessService
@@ -46,6 +49,10 @@ export class ConsumerBusinessDetailsSearchComponent implements OnInit {
   }
 
   updateConsumerBusiness() {
+    let functionName = "updateConsumerBusiness()";
+
+    this.debug(`${this.className}::${functionName}`);
+
     this.consumerBusinessService.updateConsumerBusinessSubject.next(this.consumer);
   }
 }

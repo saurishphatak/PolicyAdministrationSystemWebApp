@@ -11,6 +11,9 @@ import { Consumer, IConsumer } from '../Models/Consumer';
 })
 export class ConsumerBusinessFormComponent implements OnInit {
 
+  debug = console.log;
+  className = "ConsumerBusinessFormComponent";
+
   formGroup: FormGroup;
   constructor(
     formBuilder: FormBuilder,
@@ -81,6 +84,10 @@ export class ConsumerBusinessFormComponent implements OnInit {
   }
 
   patchForm(consumerBusiness: IConsumer) {
+    let functionName = "patchForm()";
+
+    this.debug(`${this.className}::${functionName}`, consumerBusiness);
+
     this.formGroup.setValue(
       {
         name: consumerBusiness?.name,
@@ -91,7 +98,8 @@ export class ConsumerBusinessFormComponent implements OnInit {
         businessFormGroup: {
           businessType: consumerBusiness?.business?.businessType,
           annualTurnover: consumerBusiness?.business?.annualTurnover,
-          totalEmployees: consumerBusiness?.business?.totalEmployess
+          totalEmployees: consumerBusiness?.business?.totalEmployess,
+          capitalInvested: consumerBusiness?.business?.capitalInvested
         }
       });
   }
