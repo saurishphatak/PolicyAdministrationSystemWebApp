@@ -32,15 +32,15 @@ export class BusinessPropertyDetailsSearchComponent implements OnInit {
       let consumerId = Number(this.formGroup.get('consumerId')?.value ?? -1);
       let businessId = Number(this.formGroup.get('businessId')?.value ?? -1);
 
-      let property = this.businessPropertyService.getBusinessProperty(consumerId, businessId);
 
-      console.log("PROPERTY RECEIVED : ", property);
-      if (property) {
-        console.log("PROPERTY FOUND : ", property);
+      this.businessPropertyService.getBusinessProperty(businessId, consumerId).subscribe(result => {
+        console.log(result);
 
-        this.property = property;
+        let propertyResult = result as any;
+
+        this.property = propertyResult.property;
         this.businessPropertyFound = true;
-      }
+      });
     }
   }
 

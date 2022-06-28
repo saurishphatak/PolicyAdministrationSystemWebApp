@@ -1,10 +1,10 @@
 export class Property implements IProperty {
-  public businessId: number;
+  public id: number;
   public squareFeet: number;
   public buildingType: string;
   public storeys: number;
   public age: number;
-  public consumerId: number;
+  public consumerID: number;
   public costOfAsset: number;
   public salvageValue: number;
   public usefulLifeOfAsset: number;
@@ -15,10 +15,10 @@ export class Property implements IProperty {
   ) {
     this.age = initialValues.age;
     this.buildingType = initialValues.buildingType;
-    this.businessId = initialValues.businessId;
+    this.id = initialValues.id;
     this.squareFeet = initialValues.squareFeet;
     this.storeys = initialValues.storeys;
-    this.consumerId = initialValues.consumerId;
+    this.consumerID = initialValues.consumerID;
     this.costOfAsset = initialValues.costOfAsset;
     this.salvageValue = initialValues.salvageValue;
     this.usefulLifeOfAsset = initialValues.usefulLifeOfAsset;
@@ -28,12 +28,12 @@ export class Property implements IProperty {
 }
 
 export interface IProperty {
-  businessId: number;
+  id: number;
   squareFeet: number;
   buildingType: string;
   storeys: number;
   age: number;
-  consumerId: number;
+  consumerID: number;
   costOfAsset: number;
   salvageValue: number;
   usefulLifeOfAsset: number;

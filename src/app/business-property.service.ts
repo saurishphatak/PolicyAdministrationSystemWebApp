@@ -16,9 +16,10 @@ export class BusinessPropertyService {
   properties: IProperty[] = [];
 
   getBusinessProperty(consumerId: number, businessId: number) {
-    let property = this.properties.find(property => property.businessId == businessId && property.consumerId == consumerId);
+    // let property = this.properties.find(property => property.businessId == businessId && property.consumerId == consumerId);
 
-    return property;
+    // return property;
+    return this.httpClient.get(environment.businessPropertyBaseURL + "/ViewConsumerProperty?" + `businessId=${businessId}&consumerId=${consumerId}`);
   }
 
   addBusinessProperty(businessProperty: IProperty) {

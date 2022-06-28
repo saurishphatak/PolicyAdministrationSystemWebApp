@@ -16,12 +16,12 @@ export class BusinessPropertyFormComponent implements OnInit {
     private businessPropertyService: BusinessPropertyService
   ) {
     this.formGroup = formBuilder.group({
-      businessId: new FormControl('', Validators.required),
+      id: new FormControl('', Validators.required),
       squareFeet: new FormControl('', Validators.required),
       buildingType: new FormControl('', Validators.required),
       storeys: new FormControl('', Validators.required),
       age: new FormControl('', Validators.required),
-      consumerId: new FormControl('', Validators.required),
+      consumerID: new FormControl('', Validators.required),
       costOfAsset: new FormControl('', Validators.required),
       salvageValue: new FormControl('', Validators.required),
       usefulLifeOfAsset: new FormControl('', Validators.required),
@@ -44,9 +44,11 @@ export class BusinessPropertyFormComponent implements OnInit {
 
       console.log("NEW PROPERTY : ", businessProperty);
 
-      this.businessPropertyService.addBusinessProperty(businessProperty).subscribe(
-        result => console.log(result)
-      );
+      // this.businessPropertyService.addBusinessProperty(businessProperty).subscribe(
+      //   result => console.log(result)
+      // );
+
+
 
       this.resetForm();
     }
