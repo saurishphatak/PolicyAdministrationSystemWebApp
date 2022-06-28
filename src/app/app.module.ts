@@ -27,7 +27,6 @@ import { PolicyParentComponent } from './policy-parent/policy-parent.component';
 import { CreatePolicyComponent } from './create-policy/create-policy.component';
 import { IssuePolicyComponent } from './issue-policy/issue-policy.component';
 import { ViewPolicyComponent } from './view-policy/view-policy.component';
-
 @NgModule({
   declarations: [
     AppComponent,

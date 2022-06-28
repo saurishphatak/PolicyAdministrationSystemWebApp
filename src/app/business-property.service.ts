@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { IProperty } from './Models/Property';
 
 @Injectable({
@@ -7,7 +9,7 @@ import { IProperty } from './Models/Property';
 })
 export class BusinessPropertyService {
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   updateBusinessPropertySubject = new Subject<IProperty>();
 
@@ -21,5 +23,7 @@ export class BusinessPropertyService {
 
   addBusinessProperty(businessProperty: IProperty) {
     this.properties.push(businessProperty);
+
+    return this.httpClient.post(environment.businessPropertyBaseURL + "/CreateBusinessProperty", businessProperty);
   }
 }

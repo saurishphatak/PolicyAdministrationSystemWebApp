@@ -44,7 +44,9 @@ export class BusinessPropertyFormComponent implements OnInit {
 
       console.log("NEW PROPERTY : ", businessProperty);
 
-      this.businessPropertyService.addBusinessProperty(businessProperty);
+      this.businessPropertyService.addBusinessProperty(businessProperty).subscribe(
+        result => console.log(result)
+      );
 
       this.resetForm();
     }

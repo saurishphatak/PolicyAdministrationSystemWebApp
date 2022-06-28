@@ -1,5 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IConsumerPolicy } from './Models/ConsumerPolicy';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { ConsumerPolicy, IConsumerPolicy } from './Models/ConsumerPolicy';
 import { IPolicyDetails } from './Models/PolicyDetails';
 
 @Injectable({
@@ -7,16 +10,17 @@ import { IPolicyDetails } from './Models/PolicyDetails';
 })
 export class PolicyService {
 
+  public constructor(
+    private httpClient: HttpClient
+  ) { }
+
   policies: any[] = [];
 
-  constructor() { }
-
   public createPolicy(policyDetails: IPolicyDetails) {
-    this.policies.push(policyDetails);
+    return this.httpClient.post(environment.policyBaseURL + "/createPolicy", policyDetails);
   }
 
   public issuePolicy(policyId: number) {
-
   }
 
   public viewPolicy(policyId: number) { }

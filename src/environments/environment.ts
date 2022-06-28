@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  policyBaseURL: "http://localhost:5168",
+  businessPropertyBaseURL: "http://localhost:5219/api/Property"
 };
 
 /*

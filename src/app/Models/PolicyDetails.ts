@@ -2,15 +2,15 @@ export class PolicyDetails implements IPolicyDetails {
   public constructor(
     initialValues: IPolicyDetails
   ) {
-    this.acceptedQuotes = initialValues.acceptedQuotes;
+    this.quotes = initialValues.quotes;
     this.consumerId = initialValues.consumerId;
   }
 
   public consumerId: number;
-  public acceptedQuotes: number;
+  public quotes: number;
 }
 
 export interface IPolicyDetails {
   consumerId: number;
-  acceptedQuotes: number;
+  quotes: number;
 }
