@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { IConsumerPolicy } from '../Models/ConsumerPolicy';
 import { PolicyService } from '../policy.service';
 
 @Component({
@@ -25,10 +26,23 @@ export class IssuePolicyComponent implements OnInit {
 
   issuePolicy() {
     if (this.formGroup.valid) {
-      let policyId = Number(this.formGroup.get('policyId') ?? "");
+      let policyId = Number(this.formGroup.get('policyId')?.value ?? "");
 
-      this.policyService.issuePolicy(policyId);
+      console.log("ISSUING policy for ", policyId);
+      this.policyService.issuePolicy(policyId).subscribe(result => {
+        console.log("ISSUED policy : ", result);
+
+        let consumerPolicy = (result as IConsumerPolicy);
+
+        alert(`Issued Policy ID : ${consumerPolicy.id}.\n\nStatus : ` + consumerPolicy.acceptedQuotes.status);
+      });
+
+      this.resetForm();
     }
+  }
+
+  resetForm() {
+    this.formGroup.reset();
   }
 
 }

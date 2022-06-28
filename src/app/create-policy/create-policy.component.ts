@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { IConsumerPolicy } from '../Models/ConsumerPolicy';
 import { PolicyService } from '../policy.service';
 
 @Component({
@@ -20,6 +21,7 @@ export class CreatePolicyComponent implements OnInit {
     this.formGroup = formBuilder.group({
       consumerId: new FormControl('', Validators.required),
       acceptedQuotes: new FormControl('', Validators.required)
+      // status: new FormControl('')
     });
   }
 
@@ -35,10 +37,21 @@ export class CreatePolicyComponent implements OnInit {
       let consumerId = Number(this.formGroup.get('consumerId')?.value ?? "");
       let acceptedQuotes = Number(this.formGroup.get('acceptedQuotes')?.value ?? "");
 
-      let result = this.policyService.createPolicy({ consumerId, quotes: acceptedQuotes });
+      this.policyService.createPolicy({ consumerId, quotes: acceptedQuotes }).subscribe((result) => {
+        console.log("CREATED POLICY :", result);
 
-      console.log(result);
+        let consumerPolicy = (result as IConsumerPolicy);
+
+        alert(`Created Policy ID : ${consumerPolicy.id}.\n\nStatus : ` + consumerPolicy.acceptedQuotes.status);
+      });
+
+      this.resetForm();
     }
+  }
+
+  resetForm() {
+    this.formGroup.reset();
+
   }
 
 }
