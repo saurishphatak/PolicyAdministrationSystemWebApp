@@ -47,4 +47,14 @@ export class BusinessPropertyDetailsSearchComponent implements OnInit {
   updateBusinessProperty() {
     this.businessPropertyService.updateBusinessPropertySubject.next(this.property);
   }
+
+  collapseBusinessPropertyDetails() {
+    this.businessPropertyFound = false;
+
+    this.resetForm();
+  }
+
+  resetForm() {
+    this.formGroup.reset();
+  }
 }

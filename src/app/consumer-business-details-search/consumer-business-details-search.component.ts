@@ -30,26 +30,6 @@ export class ConsumerBusinessDetailsSearchComponent implements OnInit {
         consumerId: new FormControl('', Validators.required)
       }
     );
-
-
-    // this.updateFormGroup = formBuilder.group(
-    //   {
-    //     id: new FormControl('', Validators.required),
-    //     name: new FormControl('', Validators.required),
-    //     dob: new FormControl('',),
-    //     email: new FormControl('', Validators.email),
-    //     pan: new FormControl('', Validators.required),
-
-    //     businessFormGroup: formBuilder.group({
-    //       id: new FormControl('', Validators.required),
-    //       businessType: new FormControl('', Validators.required),
-    //       annualTurnover: new FormControl('', Validators.required),
-    //       totalEmployees: new FormControl('', Validators.required),
-    //       capitalInvested: new FormControl('', Validators.required)
-    //     }
-    //     )
-    //   }
-    // )
   }
 
   ngOnInit(): void {
@@ -79,6 +59,15 @@ export class ConsumerBusinessDetailsSearchComponent implements OnInit {
     this.debug(`${this.className}::${functionName}`);
 
     this.consumerBusinessService.updateConsumerBusinessSubject.next(this.consumer);
-    // this.consumerBusinessService.updateConsumerBusiness(this.consumer);
+  }
+
+  collapseConsumerBusinessDetails() {
+    this.consumerFound = false;
+
+    this.resetForm();
+  }
+
+  resetForm() {
+    this.searchConsumerFormGroup.reset();
   }
 }
