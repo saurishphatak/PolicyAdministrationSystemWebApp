@@ -13,9 +13,9 @@ export class Property implements IProperty {
   public constructor(
     initialValues: IProperty
   ) {
+    this.id = initialValues.id;
     this.age = initialValues.age;
     this.buildingType = initialValues.buildingType;
-    this.id = initialValues.id;
     this.squareFeet = initialValues.squareFeet;
     this.storeys = initialValues.storeys;
     this.consumerID = initialValues.consumerID;

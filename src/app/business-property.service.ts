@@ -13,18 +13,32 @@ export class BusinessPropertyService {
 
   updateBusinessPropertySubject = new Subject<IProperty>();
 
-  properties: IProperty[] = [];
 
-  getBusinessProperty(consumerId: number, businessId: number) {
-    // let property = this.properties.find(property => property.businessId == businessId && property.consumerId == consumerId);
+  public submitBusinessProperty(businessProperty: IProperty, updateProperty: boolean) {
+    console.log("SUBMITTED property : ", businessProperty.id);
 
-    // return property;
-    return this.httpClient.get(environment.businessPropertyBaseURL + "/ViewConsumerProperty?" + `businessId=${businessId}&consumerId=${consumerId}`);
+    if (updateProperty == false) {
+      return this.addBusinessProperty(businessProperty);
+    }
+    else {
+      return this.updateBusinessProperty(businessProperty);
+    }
   }
 
-  addBusinessProperty(businessProperty: IProperty) {
-    this.properties.push(businessProperty);
+  public getBusinessProperty(consumerId: number, businessId: number) {
+    console.log("SEARCHING property : ", { businessId, consumerId });
+    return this.httpClient.get(environment.businessPropertyBaseURL + "/ViewConsumerProperty?" + `businessId=${businessId}&consumerId=${consumerId}`);//.subscribe(console.log);
+  }
+
+  public addBusinessProperty(businessProperty: IProperty) {
+    console.log("ADDING property : ", businessProperty.id);
 
     return this.httpClient.post(environment.businessPropertyBaseURL + "/CreateBusinessProperty", businessProperty);
+  }
+
+  public updateBusinessProperty(businessProperty: IProperty) {
+    console.log("UPDATING property : ", businessProperty.id);
+
+    return this.httpClient.put(environment.businessPropertyBaseURL + "/UpdateBusinessProperty?" + `businessId=${businessProperty.id}`, businessProperty);
   }
 }

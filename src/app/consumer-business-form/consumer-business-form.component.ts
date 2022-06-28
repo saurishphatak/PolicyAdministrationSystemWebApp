@@ -41,7 +41,8 @@ export class ConsumerBusinessFormComponent implements OnInit {
     this.consumerBusinessService.updateConsumerBusinessSubject.subscribe(this.patchForm.bind(this));
   }
 
-  lastId = -1;
+  lastConsumerId = -1;
+  lastBusinessId = -1;
 
   onSubmit() {
     let businessFormGroup = this.formGroup.get("businessFormGroup") as FormGroup;
@@ -50,14 +51,14 @@ export class ConsumerBusinessFormComponent implements OnInit {
 
       let newConsumer = new Consumer(
         {
-          id: this.lastId > 0 ? this.lastId : -1,
+          id: this.lastConsumerId > 0 ? this.lastConsumerId : -1,
           name: this.formGroup.get("name")?.value ?? "",
           email: this.formGroup.get("email")?.value ?? "",
           pan: this.formGroup.get("pan")?.value ?? "",
           dob: new Date().toString() ?? "",
 
           business: {
-            id: -1,
+            id: this.lastBusinessId > 0 ? this.lastBusinessId : -1,
             annualTurnover: businessFormGroup.get("annualTurnover")?.value,
             businessType: businessFormGroup.get("businessType")?.value,
             totalEmployees: businessFormGroup.get("totalEmployees")?.value,
@@ -69,7 +70,8 @@ export class ConsumerBusinessFormComponent implements OnInit {
       console.log("NEW CONSUMER : ", newConsumer);
       this.consumerBusinessService.submitConsumerBusiness(newConsumer).subscribe(console.log);
 
-      this.lastId = -1;
+      this.lastConsumerId = -1;
+      this.lastBusinessId = -1;
     }
 
     this.resetForm();
@@ -105,6 +107,7 @@ export class ConsumerBusinessFormComponent implements OnInit {
         }
       });
 
-    this.lastId = consumerBusiness.id;
+    this.lastConsumerId = consumerBusiness.id;
+    this.lastBusinessId = consumerBusiness.business.id;
   }
 }

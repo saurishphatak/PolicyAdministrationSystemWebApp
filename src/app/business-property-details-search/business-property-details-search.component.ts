@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { BusinessPropertyService } from '../business-property.service';
 import { IProperty } from '../Models/Property';
+import { IPropertyMaster } from '../Models/PropertyMaster';
 
 @Component({
   selector: 'app-business-property-details-search',
@@ -32,13 +33,12 @@ export class BusinessPropertyDetailsSearchComponent implements OnInit {
       let consumerId = Number(this.formGroup.get('consumerId')?.value ?? -1);
       let businessId = Number(this.formGroup.get('businessId')?.value ?? -1);
 
-
-      this.businessPropertyService.getBusinessProperty(businessId, consumerId).subscribe(result => {
+      this.businessPropertyService.getBusinessProperty(consumerId, businessId).subscribe(result => {
         console.log(result);
 
-        let propertyResult = result as any;
+        let property = (result as IPropertyMaster).property;
 
-        this.property = propertyResult.property;
+        this.property = property;
         this.businessPropertyFound = true;
       });
     }

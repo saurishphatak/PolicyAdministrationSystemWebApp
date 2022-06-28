@@ -33,8 +33,9 @@ export class BusinessPropertyFormComponent implements OnInit {
     this.businessPropertyService.updateBusinessPropertySubject.subscribe(this.patchForm.bind(this));
   }
 
+  propertyBeingUpdated = false;
+
   onSubmit() {
-    console.log("CLICKED");
 
     console.log(this.formGroup.value);
     if (this.formGroup.valid) {
@@ -44,20 +45,23 @@ export class BusinessPropertyFormComponent implements OnInit {
 
       console.log("NEW PROPERTY : ", businessProperty);
 
-      // this.businessPropertyService.addBusinessProperty(businessProperty).subscribe(
-      //   result => console.log(result)
-      // );
-
-
+      this.businessPropertyService.submitBusinessProperty(businessProperty, this.propertyBeingUpdated).subscribe(result => {
+        console.log("SUBMIT SUCCESSFUL : ", result);
+      });
 
       this.resetForm();
+
+      this.propertyBeingUpdated = false;
     }
   }
 
   patchForm(property: IProperty) {
+    console.log("TO BE UPDATED property :", property.id);
     this.formGroup.setValue(
       property
     );
+
+    this.propertyBeingUpdated = true;
   }
 
   resetForm() {
