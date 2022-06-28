@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { Business } from './Models/Business';
 import { Consumer, IConsumer } from './Models/Consumer';
 
@@ -12,51 +12,34 @@ export class ConsumerBusinessService {
 
   public updateConsumerBusinessSubject = new Subject<IConsumer>();
 
-  consumerBusinesses: IConsumer[] = [
-    new Consumer(
-      {
-        name: "XYZ",
-        dob: new Date(),
-        email: "abcd@gmail.com",
-        id: 1,
-        pan: "ABCD1234",
-        business: new Business(
-          {
-            id: 1,
-            annualTurnover: 34,
-            businessType: "Retail Equipments",
-            totalEmployess: 30,
-            capitalInvested: 40
-          }
-        ),
-      }
-    )
-  ];
-
   public constructor(
     private httpClient: HttpClient
   ) { }
 
   getConsumerBusiness(consumerId: number) {
     console.log("SEARCHING ", consumerId);
-    let consumer = this.consumerBusinesses.find(consumer => consumer.id == consumerId);
 
-    console.log("FOUND : ", consumer);
+    return this.httpClient.get(environment.consumerBaseURL + "/ViewConsumerBusiness?" + `consumerId=${consumerId}`);
+  }
 
-    return consumer;
+  submitConsumerBusiness(consumer: IConsumer) {
+    if (consumer.id <= 0) {
+      return this.addConsumerBusiness(consumer);
+    }
+    else {
+      return this.updateConsumerBusiness(consumer);
+    }
   }
 
   addConsumerBusiness(consumer: IConsumer) {
-    if (consumer.id <= 0) {
-      this.httpClient.post('/addConsumerBusiness', consumer);
-    }
-    else {
-      this.httpClient.post('/updateConsumerBusiness', consumer);
-    }
-    // this.consumerBusinesses.push(consumer);
-    // return this.httpClient.post(`${environment.baseUrl}/api/createConsumerBusiness}`, consumer);
+    console.log("POSTING consumer", consumer.id);
+    return this.httpClient.post(environment.consumerBaseURL + '/CreateConsumerBusiness', consumer);
+  }
 
-    console.log(this.consumerBusinesses);
+  updateConsumerBusiness(consumer: IConsumer) {
+    console.log("PUTTING consumer : ", consumer.id);
+
+    return this.httpClient.put(environment.consumerBaseURL + "/UpdateConsumerBusiness?" + `consumerId=${consumer.id}`, consumer);
   }
 
 }

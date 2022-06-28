@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   policyBaseURL: "http://localhost:5168",
-  businessPropertyBaseURL: "http://localhost:5219/api/Property"
+  businessPropertyBaseURL: "http://localhost:5219/api/Property",
+  consumerBaseURL: "http://localhost:5219/api/Consumer"
 };
 
 /*

@@ -11,25 +11,25 @@
 </form>
 
 <mat-card *ngIf="this.consumerFound">
-  <div id="consumer-details-div">
+  <form id="consumer-details-div" [formGroup]="this.updateFormGroup">
     <mat-form-field>
       <mat-label>Consumer ID</mat-label>
-      <input type="number" matInput [value]="this.consumer?.id" readonly>
+      <input type="number" matInput formControlName="id" [value]="this.consumer?.id" readonly>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Consumer Name</mat-label>
-      <input type="text" matInput [value]="this.consumer?.name" readonly>
+      <input type="text" matInput formControlName="name" [value]="this.consumer?.name" readonly>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Email</mat-label>
-      <input type="text" matInput [value]="this.consumer?.email" readonly>
+      <input type="text" matInput formControlName="email" [value]="this.consumer?.email" readonly>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>PAN</mat-label>
-      <input type="text" matInput [value]="this.consumer?.pan" readonly>
+      <input type="text" matInput formControlName="pan" [value]="this.consumer?.pan" readonly>
     </mat-form-field>
 
     <mat-card>
@@ -41,20 +41,22 @@
 
       <mat-card-content>
 
-        <div id="consumer-business-details-div">
+        <div id="consumer-business-details-div" formGroupName="businessFormGroup">
           <mat-form-field>
             <mat-label>Business ID</mat-label>
-            <input type="number" matInput [value]="this.consumer?.business?.id" readonly>
+            <input type="number" matInput formControlName="id" [value]="this.consumer?.business?.id" readonly>
           </mat-form-field>
 
           <mat-form-field>
             <mat-label>Business Type</mat-label>
-            <input type="string" matInput [value]="this.consumer?.business?.businessType" readonly>
+            <input type="string" matInput formControlName="businessType" [value]="this.consumer?.business?.businessType"
+              readonly>
           </mat-form-field>
 
           <mat-form-field>
             <mat-label>Annual Turnover</mat-label>
-            <input type="number" matInput [value]="this.consumer?.business?.annualTurnover" readonly>
+            <input type="number" matInput formControlName="annualTurnover"
+              [value]="this.consumer?.business?.annualTurnover" readonly>
           </mat-form-field>
 
           <mat-form-field>
@@ -73,5 +75,5 @@
 
     <!-- Update consumer business button -->
     <button type="button" mat-flat-button color="primary" (click)="this.updateConsumerBusiness()">Update</button>
-  </div>
+  </form>
 </mat-card>

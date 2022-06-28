@@ -3,7 +3,7 @@ import { IBusiness } from "./Business";
 export interface IConsumer {
   id: number;
   name: string;
-  dob: Date;
+  dob: string;
   email: string;
   pan: string;
   business: IBusiness
@@ -12,7 +12,7 @@ export interface IConsumer {
 export class Consumer implements IConsumer {
   public id: number = -1;
   public name: string;
-  public dob: Date;
+  public dob: string;
   public email: string;
   public pan: string;
   public business: IBusiness;
@@ -30,3 +30,16 @@ export class Consumer implements IConsumer {
 }
 
 
+// public class Business {
+//   /*protected static int _lastId = 0;
+
+//   public int ID = ++Business._lastId;*/
+
+//   public int ID { get; set; }
+//         public string BusinessType { get; set; } = "";        //  (Proprietorship/Partnership)
+//         public decimal CapitalInvested { get; set; } = 0;
+
+//         public decimal AnnualTurnover { get; set; } = 0;
+
+//         public int TotalEmployees { get; set; } = 0;
+    // }

@@ -41,7 +41,7 @@ export class ConsumerBusinessFormComponent implements OnInit {
     this.consumerBusinessService.updateConsumerBusinessSubject.subscribe(this.patchForm.bind(this));
   }
 
-  lastId = 1;
+  lastId = -1;
 
   onSubmit() {
     let businessFormGroup = this.formGroup.get("businessFormGroup") as FormGroup;
@@ -50,24 +50,26 @@ export class ConsumerBusinessFormComponent implements OnInit {
 
       let newConsumer = new Consumer(
         {
-          id: ++this.lastId,
-          name: this.formGroup.get("name")?.value,
-          email: this.formGroup.get("email")?.value,
-          pan: this.formGroup.get("pan")?.value,
-          dob: new Date(),
+          id: this.lastId > 0 ? this.lastId : -1,
+          name: this.formGroup.get("name")?.value ?? "",
+          email: this.formGroup.get("email")?.value ?? "",
+          pan: this.formGroup.get("pan")?.value ?? "",
+          dob: new Date().toString() ?? "",
 
           business: {
-            id: ++this.lastId,
+            id: -1,
             annualTurnover: businessFormGroup.get("annualTurnover")?.value,
             businessType: businessFormGroup.get("businessType")?.value,
-            totalEmployess: businessFormGroup.get("totalEmployees")?.value,
+            totalEmployees: businessFormGroup.get("totalEmployees")?.value,
             capitalInvested: businessFormGroup.get("capitalInvested")?.value,
           }
         }
       );
 
-      console.log(newConsumer);
-      this.consumerBusinessService.addConsumerBusiness(newConsumer);
+      console.log("NEW CONSUMER : ", newConsumer);
+      this.consumerBusinessService.submitConsumerBusiness(newConsumer).subscribe(console.log);
+
+      this.lastId = -1;
     }
 
     this.resetForm();
@@ -98,9 +100,11 @@ export class ConsumerBusinessFormComponent implements OnInit {
         businessFormGroup: {
           businessType: consumerBusiness?.business?.businessType,
           annualTurnover: consumerBusiness?.business?.annualTurnover,
-          totalEmployees: consumerBusiness?.business?.totalEmployess,
+          totalEmployees: consumerBusiness?.business?.totalEmployees,
           capitalInvested: consumerBusiness?.business?.capitalInvested
         }
       });
+
+    this.lastId = consumerBusiness.id;
   }
 }
