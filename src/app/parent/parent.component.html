@@ -24,9 +24,16 @@
       </div>
 
       <div class="test-div">
+        <button type="button" mat-flat-button color="primary" routerLink="/quotes" (click)="this.toggleDrawer()"
+          class="navigation-buttons">Quotes</button>
+      </div>
+
+      <div class="test-div">
         <button type="button" mat-flat-button color="warn" (click)="this.logout()"
           class="navigation-buttons">Logout</button>
       </div>
+
+
     </div>
   </mat-drawer>
 

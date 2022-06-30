@@ -28,6 +28,7 @@ import { CreatePolicyComponent } from './create-policy/create-policy.component';
 import { IssuePolicyComponent } from './issue-policy/issue-policy.component';
 import { LoginComponent } from './login/login.component';
 import { ViewPolicyComponent } from './view-policy/view-policy.component';
+import { QuotesComponent } from './quotes/quotes.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +43,8 @@ import { ViewPolicyComponent } from './view-policy/view-policy.component';
     CreatePolicyComponent,
     IssuePolicyComponent,
     ViewPolicyComponent,
-    LoginComponent
+    LoginComponent,
+    QuotesComponent
   ],
   imports: [
     BrowserModule,

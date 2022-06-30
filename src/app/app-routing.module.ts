@@ -5,12 +5,14 @@ import { ConsumerBusinessParentComponent } from './consumer-business-parent/cons
 import { LoginComponent } from './login/login.component';
 import { ParentComponent } from './parent/parent.component';
 import { PolicyParentComponent } from './policy-parent/policy-parent.component';
+import { QuotesComponent } from './quotes/quotes.component';
 
 const routes: Routes = [
   { path: "consumerBusiness", component: ConsumerBusinessParentComponent },
   { path: "businessProperty", component: BusinessPropertyParentComponent },
   { path: "policy", component: PolicyParentComponent },
   { path: "login", component: LoginComponent },
+  { path: "quotes", component: QuotesComponent },
   { path: "", redirectTo: "login", pathMatch: "full" }
 
 ];
