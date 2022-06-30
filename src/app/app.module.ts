@@ -26,6 +26,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { PolicyParentComponent } from './policy-parent/policy-parent.component';
 import { CreatePolicyComponent } from './create-policy/create-policy.component';
 import { IssuePolicyComponent } from './issue-policy/issue-policy.component';
+import { LoginComponent } from './login/login.component';
 import { ViewPolicyComponent } from './view-policy/view-policy.component';
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ViewPolicyComponent } from './view-policy/view-policy.component';
     PolicyParentComponent,
     CreatePolicyComponent,
     IssuePolicyComponent,
-    ViewPolicyComponent
+    ViewPolicyComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-parent',
@@ -8,7 +9,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 })
 export class ParentComponent implements OnInit, AfterViewInit {
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngAfterViewInit(): void {
     console.log(this.drawer);
@@ -21,6 +22,10 @@ export class ParentComponent implements OnInit, AfterViewInit {
 
   toggleDrawer() {
     this.drawer.toggle();
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
 }

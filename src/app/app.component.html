@@ -1,3 +1,2 @@
-<app-parent>
-
-</app-parent>
+<app-parent *ngIf="this.authService.isLoggedIn$ | async"></app-parent>
+<app-login *ngIf="!(this.authService.isLoggedIn$ | async)"></app-login>

@@ -14,3 +14,21 @@
 mat-drawer {
   width: 20%;
 }
+
+
+.navigation-buttons {
+  margin: 5px;
+
+  padding: 10px;
+}
+
+.test-div {
+  display: flex;
+  flex-direction: column;
+
+  width: 80%;
+
+  margin: 5px;
+
+  /* border: 1px solid red; */
+}
