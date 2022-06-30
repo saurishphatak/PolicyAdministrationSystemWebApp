@@ -9,7 +9,13 @@
   flex-direction: column;
 
   justify-content: space-around;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+
+  height: 100vh;
+}
+
+#view-policy-details-div {
+  /* border: 1px solid blue; */
 
   height: 100vh;
 }

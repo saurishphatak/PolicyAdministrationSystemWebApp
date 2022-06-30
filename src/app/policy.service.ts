@@ -24,5 +24,7 @@ export class PolicyService {
     return this.httpClient.post(environment.policyBaseURL + "/issuePolicy?" + `policyId=${policyId}`, {});
   }
 
-  public viewPolicy(policyId: number) { }
+  public viewPolicy(policyId: number) {
+    return this.httpClient.get(environment.policyBaseURL + "/viewPolicy?" + `policyId=${policyId}`);
+  }
 }
