@@ -68,7 +68,13 @@ export class ConsumerBusinessFormComponent implements OnInit {
       );
 
       console.log("NEW CONSUMER : ", newConsumer);
-      this.consumerBusinessService.submitConsumerBusiness(newConsumer).subscribe(console.log);
+      this.consumerBusinessService.submitConsumerBusiness(newConsumer).subscribe((result) => {
+        console.log("ADDED Consumer", result);
+
+        let consumer = result as IConsumer;
+
+        alert(`Consumer submitted with \nConsumer ID: ${consumer.id}\nBusiness ID :${consumer.business.id}`);
+      });
 
       this.lastConsumerId = -1;
       this.lastBusinessId = -1;

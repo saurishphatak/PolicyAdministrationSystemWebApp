@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { BusinessPropertyService } from '../business-property.service';
 import { IProperty, Property } from '../Models/Property';
+import { IPropertyMaster } from '../Models/PropertyMaster';
 
 @Component({
   selector: 'app-business-property-form',
@@ -46,7 +47,11 @@ export class BusinessPropertyFormComponent implements OnInit {
       console.log("NEW PROPERTY : ", businessProperty);
 
       this.businessPropertyService.submitBusinessProperty(businessProperty, this.propertyBeingUpdated).subscribe(result => {
-        console.log("SUBMIT SUCCESSFUL : ", result);
+        console.log("BUSINESS PROPERTY submitted successfully : ", result);
+
+        let property = result as IPropertyMaster;
+
+        alert(`Business Property submitted.\nProperty ID : ${property.property.id}`);
       });
 
       this.resetForm();
